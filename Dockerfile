@@ -27,9 +27,6 @@ RUN DEBIAN_FRONTEND=noninteractive \
 # Add volumes for volatile directories that aren't usually shared with child images.
 VOLUME ["/tomcat/logs", "/tomcat/temp", "/tomcat/work"]
 
-# Expose HTTP only by default.
-EXPOSE 8000
-
 # Workaround for https://bugs.launchpad.net/ubuntu/+source/tomcat7/+bug/1232258
 RUN ln -s /var/lib/tomcat7/common/ /usr/share/tomcat7/common && \
  ln -s /var/lib/tomcat7/server/ /usr/share/tomcat7/server && \
@@ -41,6 +38,8 @@ RUN cd sysnet
 COPY openempi-3.3.0c /sysnet/openempi-3.3.0c
 RUN export OPENEMPI_HOME=/sysnet/openempi-3.3.0c
 
+RUN cp /sysnet/openempi-3.3.0c/openempi-entity-3.3.0c/openempi-entity-webapp-web-3.3.0c.war /var/lib/tomcat7/webapps
+
 # Use IPv4 by default and UTF-8 encoding. These are almost universally useful.
 ENV JAVA_OPTS -Djava.net.preferIPv4Stack=true -Dfile.encoding=UTF-8
 
@@ -48,5 +47,8 @@ ENV JAVA_OPTS -Djava.net.preferIPv4Stack=true -Dfile.encoding=UTF-8
 ENV CATALINA_BASE /tomcat
 
 # Drop privileges and run Tomcat.
-#USER tcuser
-#CMD /usr/share/tomcat7/bin/catalina.sh run
+USER tcuser
+CMD /usr/share/tomcat7/bin/catalina.sh run
+
+# Expose HTTP only by default.
+EXPOSE 8080

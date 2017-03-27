@@ -1,0 +1,1 @@
+<Context path="/openemp-admin" docBase="@OPENEMPIHOME@/webapp-web/target/openempi-entity-webapp-web-@VERSION@"/>

@@ -61,19 +61,13 @@ RUN set -x \
 
 ENV CATALINA_HOME /sysnet/openempi-3.3.0c
 ENV PATH $CATALINA_HOME/bin:$PATH
-
-#RUN cp /sysnet/openempi-3.3.0c/openempi-entity-3.3.0c/openempi-entity-webapp-web-3.3.0c.war $CATALINA_HOME/webapps/openempi.war
+ENV OPENEMPI_HOME /sysnet/openempi-3.3.0c
+ENV PATH $OPENEMPI_HOME/bin:$PATH
 
 EXPOSE 8080
 
-#RUN echo "export JAVA_OPTS=$JAVA_OPTS\nexport #DHIS2_HOME='/opt/dhis2/config'" >> $CATALINA_HOME/bin/setenv.sh
-ENV OPENEMPI_HOME /sysnet/openempi-3.3.0c
-ENV PATH $OPENEMPI_HOME/bin:$PATH
-WORKDIR $OPENEMPI_HOME
-COPY tomcat-users.xml $OPENEMPI_HOME/conf/
-RUN rm -r $CATALINA_HOME/conf/tomcat-users.xml
 COPY tomcat-users.xml $CATALINA_HOME/conf/
 RUN chmod 777 $CATALINA_HOME/conf/tomcat-users.xml
 # Launch Tomcat
-
-#CMD ["catalina.sh", "run"]
+WORKDIR /
+CMD ./sysnet/openempi-3.3.0c/bin/catalina.sh jpda run

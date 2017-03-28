@@ -9,28 +9,24 @@ FROM uwitech/ohie-base
 
 USER root
 
-#install tools
-RUN apt-get -y install software-properties-common python-software-properties
-RUN add-apt-repository ppa:webupd8team/java
-RUN apt-get update
-RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
-    apt-get install -y oracle-java7-installer && \
-    apt-get clean
-RUN DEBIAN_FRONTEND=noninteractive \
- apt-get update && \
- apt-get install -y openjdk-7-jre-headless tomcat7 tomcat7-user && \
- groupadd -g 9000 tcuser && \
- useradd -d /tomcat -r -s /bin/false -g 9000 -u 9000 tcuser && \ 
- tomcat7-instance-create /tomcat && \
- chown -R tcuser:tcuser /tomcat
+# Install dependencies
+RUN apt-get update && \
+apt-get install -y git build-essential curl wget software-properties-common
 
-# Add volumes for volatile directories that aren't usually shared with child images.
-VOLUME ["/tomcat/logs", "/tomcat/temp", "/tomcat/work"]
+# Install Java.
+RUN \
+  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  add-apt-repository -y ppa:webupd8team/java && \
+  apt-get update && \
+  apt-get install -y oracle-java8-installer && \
+  rm -rf /var/lib/apt/lists/* && \
+  rm -rf /var/cache/oracle-jdk8-installer
 
-# Workaround for https://bugs.launchpad.net/ubuntu/+source/tomcat7/+bug/1232258
-RUN ln -s /var/lib/tomcat7/common/ /usr/share/tomcat7/common && \
- ln -s /var/lib/tomcat7/server/ /usr/share/tomcat7/server && \
- ln -s /var/lib/tomcat7/shared/ /usr/share/tomcat7/shared
+#RUN apt-get install oracle-java8-set-default
+
+
+# Define commonly used JAVA_HOME variable
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 #install openempi
 RUN mkdir sysnet
@@ -38,17 +34,46 @@ RUN cd sysnet
 COPY openempi-3.3.0c /sysnet/openempi-3.3.0c
 RUN export OPENEMPI_HOME=/sysnet/openempi-3.3.0c
 
-RUN cp /sysnet/openempi-3.3.0c/openempi-entity-3.3.0c/openempi-entity-webapp-web-3.3.0c.war /var/lib/tomcat7/webapps
+# Install Tomcat
+ENV CATALINA_HOME /usr/local/tomcat
+ENV PATH $CATALINA_HOME/bin:$PATH
+RUN mkdir -p "$CATALINA_HOME"
+WORKDIR $CATALINA_HOME
+ 
+# see https://www.apache.org/dist/tomcat/tomcat-8/KEYS
+ENV GPG_KEYS 05AB33110949707C93A279E3D3EFE6B686867BA6 07E48665A34DCAFAE522E5E6266191C37C037D42 47309207D818FFD8DCD3F83F1931D684307A10A5 541FBE7D8F78B25E055DDEE13C370389288584E7 61B832AC2F1C5A90F0F9B00A1C506407564C17A3 713DA88BE50911535FE716F5208B0AB1D63011C7 79F7026C690BAA50B92CD8B66A3AD3F4F22C4FED 9BA44C2621385CB966EBA586F72C284D731FABEE A27677289986DB50844682F8ACB77FC2E86E29AC A9C5DF4D22E99998D9875A5110C01C5A2F6059E7 DCFD35E0BF8CA7344752DE8B6FB21E8933C60243 F3A04C595DB5B6A5F1ECA43E3B7BBB100D811BBE F7DA48BB64BCB84ECBA7EE6935CD23C10D498E23
+RUN set -ex; \
+	for key in $GPG_KEYS; do \
+		gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
+	done
 
-# Use IPv4 by default and UTF-8 encoding. These are almost universally useful.
-ENV JAVA_OPTS -Djava.net.preferIPv4Stack=true -Dfile.encoding=UTF-8
+ENV TOMCAT_MAJOR 8
+ENV TOMCAT_VERSION 8.5.12
+ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
 
-# All your base...
-ENV CATALINA_BASE /tomcat
+RUN set -x \
+    && curl -fSL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
+    && curl -fSL "$TOMCAT_TGZ_URL.asc" -o tomcat.tar.gz.asc \
+    && gpg --verify tomcat.tar.gz.asc \
+    && tar -xvf tomcat.tar.gz --strip-components=1 \
+    && rm bin/*.bat \
+    && rm tomcat.tar.gz*
 
-# Drop privileges and run Tomcat.
-USER tcuser
-CMD /usr/share/tomcat7/bin/catalina.sh run
+ENV CATALINA_HOME /sysnet/openempi-3.3.0c
+ENV PATH $CATALINA_HOME/bin:$PATH
 
-# Expose HTTP only by default.
+#RUN cp /sysnet/openempi-3.3.0c/openempi-entity-3.3.0c/openempi-entity-webapp-web-3.3.0c.war $CATALINA_HOME/webapps/openempi.war
+
 EXPOSE 8080
+
+#RUN echo "export JAVA_OPTS=$JAVA_OPTS\nexport #DHIS2_HOME='/opt/dhis2/config'" >> $CATALINA_HOME/bin/setenv.sh
+ENV OPENEMPI_HOME /sysnet/openempi-3.3.0c
+ENV PATH $OPENEMPI_HOME/bin:$PATH
+WORKDIR $OPENEMPI_HOME
+COPY tomcat-users.xml $OPENEMPI_HOME/conf/
+RUN rm -r $CATALINA_HOME/conf/tomcat-users.xml
+COPY tomcat-users.xml $CATALINA_HOME/conf/
+RUN chmod 777 $CATALINA_HOME/conf/tomcat-users.xml
+# Launch Tomcat
+
+#CMD ["catalina.sh", "run"]

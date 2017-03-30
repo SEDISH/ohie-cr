@@ -1,0 +1,12 @@
+version: '2'
+services:
+    openempi-app:
+        image: uwitech/ohie-cr
+        ports:
+            - 8080:8080
+        depends_on:
+            - openempi-db
+    openempi-db:
+        extends:
+            file: postgresql.yml
+            service: postgresql

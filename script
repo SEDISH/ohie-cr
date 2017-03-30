@@ -1,0 +1,12 @@
+sleep 15
+su - postgres
+cd /
+psql -f /sysnet/openempi-3.3.0c/openempi-entity-3.3.0c/conf/db-initialize.sql
+psql -f /sysnet/openempi-3.3.0c/openempi-entity-3.3.0c/conf/create_new_database_schema-3.0.0.sql
+psql -f /sysnet/openempi-3.3.0c/openempi-entity-3.3.0c/conf/create_person_entity_model_definition.sql
+psql -f /sysnet/openempi-3.3.0c/openempi-entity-3.3.0c/conf/create_person_reference_tables.sql
+#exit
+
+#psql --username=openempi --host=localhost openempi
+#pg_ctl -D /var/lib/postgresql/data -l logfile start
+#psql -h postgresql://openempi-db:5432

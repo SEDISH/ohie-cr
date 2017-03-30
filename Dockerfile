@@ -68,6 +68,12 @@ EXPOSE 8080
 
 COPY tomcat-users.xml $CATALINA_HOME/conf/
 RUN chmod 777 $CATALINA_HOME/conf/tomcat-users.xml
+
 # Launch Tomcat
 WORKDIR /
-CMD ./sysnet/openempi-3.3.0c/bin/catalina.sh jpda run
+COPY /script /script
+RUN chmod +x /script
+
+CMD /script
+
+#CMD ./sysnet/openempi-3.3.0c/bin/catalina.sh jpda run

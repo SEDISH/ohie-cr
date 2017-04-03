@@ -59,7 +59,7 @@ fi
 
 H2DIR=@INSTALLDIR@/h2
 H2CP=${H2DIR}/bin/h2*.jar
-BASEDIR=@OPENEMPIHOME@
+BASEDIR=/sysnet/openempi-3.3.0c
 
 java -classpath ${H2CP} org.h2.tools.Server -tcp -baseDir ${BASEDIR} -ifExists &
 

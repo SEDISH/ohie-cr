@@ -55,7 +55,7 @@ goto setArgs
 
 set H2DIR=@INSTALLDIR@/h2
 set H2CP=%H2DIR%/bin/h2-1.4.192.jar
-set BASEDIR=@OPENEMPIHOME@
+set BASEDIR=/sysnet/openempi-3.3.0c
 
 call "%EXECUTABLE%" stop %CMD_LINE_ARGS%
 

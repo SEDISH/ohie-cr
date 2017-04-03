@@ -14,8 +14,8 @@
 #  permissions and limitations under the License.
 #
 #
-jdbc.driverClassName=org.h2.Driver
-jdbc.url=jdbc:h2:tcp\://localhost/openempidb
+jdbc.driverClassName=org.postgresql.Driver
+jdbc.url=jdbc\:postgresql\://openempi-db/openempi
 
 jdbc.username=openempi
 jdbc.password=openempi

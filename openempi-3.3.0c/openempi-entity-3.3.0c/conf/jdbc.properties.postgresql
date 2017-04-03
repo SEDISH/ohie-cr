@@ -15,7 +15,7 @@
 #
 #
 jdbc.driverClassName=org.postgresql.Driver
-jdbc.url=jdbc\:postgresql\://localhost/openempi
+jdbc.url=jdbc\:postgresql\://openempi-db/openempi
 
 jdbc.username=openempi
 jdbc.password=openempi

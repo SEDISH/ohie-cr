@@ -1,1 +1,1 @@
-<Context path="/openemp-admin" docBase="@OPENEMPIHOME@/webapp-web/target/openempi-entity-webapp-web-@VERSION@"/>
+<Context path="/openemp-admin" docBase="/sysnet/openempi-3.3.0c/openempi-entity-3.3.0c/webapp-web/target/openempi-entity-webapp-web-@VERSION@"/>

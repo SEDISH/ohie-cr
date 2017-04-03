@@ -32,6 +32,7 @@ RUN mkdir sysnet
 RUN cd sysnet
 COPY openempi-3.3.0c /sysnet/openempi-3.3.0c
 RUN export OPENEMPI_HOME=/sysnet/openempi-3.3.0c
+RUN export CATALINA_BASE=/sysnet/openempi-3.3.0c
 
 # Install Tomcat
 ENV CATALINA_HOME /usr/local/tomcat
@@ -68,6 +69,8 @@ EXPOSE 8080
 
 COPY tomcat-users.xml $CATALINA_HOME/conf/
 RUN chmod 777 $CATALINA_HOME/conf/tomcat-users.xml
+#COPY tomcat-users.xml $OPENEMPI_HOME/conf/
+#RUN chmod 777 $OPENEMPI_HOME/conf/tomcat-users.xml
 
 # Launch Tomcat
 WORKDIR /

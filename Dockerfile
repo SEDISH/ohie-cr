@@ -53,8 +53,8 @@ EXPOSE 8080
 
 COPY tomcat-users.xml $CATALINA_HOME/conf/
 RUN chmod 777 $CATALINA_HOME/conf/tomcat-users.xml
-#COPY tomcat-users.xml $OPENEMPI_HOME/conf/
-#RUN chmod 777 $OPENEMPI_HOME/conf/tomcat-users.xml
+
+RUN rm -r /sysnet/openempi-3.3.0c/webapps/ROOT/
 
 # Launch Tomcat
 WORKDIR /

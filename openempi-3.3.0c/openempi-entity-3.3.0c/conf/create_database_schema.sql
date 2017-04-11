@@ -349,7 +349,7 @@ insert into language (language_cd, language_name, language_description, language
 insert into language (language_cd, language_name, language_description, language_code) values (174,'Uzbek','Uzbek','uz');
 insert into language (language_cd, language_name, language_description, language_code) values (175,'Venda','Venda','ve');
 insert into language (language_cd, language_name, language_description, language_code) values (176,'Vietnamese','Vietnamese','vi');
-insert into language (language_cd, language_name, language_description, language_code) values (177,'Volapük','Volapük','vo');
+insert into language (language_cd, language_name, language_description, language_code) values (177,'Volapï¿½k','Volapï¿½k','vo');
 insert into language (language_cd, language_name, language_description, language_code) values (178,'Walloon','Walloon','wa');
 insert into language (language_cd, language_name, language_description, language_code) values (179,'Wolof','Wolof','wo');
 insert into language (language_cd, language_name, language_description, language_code) values (180,'Xhosa','Xhosa','xh');
@@ -1372,6 +1372,7 @@ CREATE TABLE person (
     email varchar(255),
     address1 varchar(64),
     address2 varchar(64),
+    address3 varchar(64),
     city varchar(64),
     state varchar(64),
     postal_code varchar(30),

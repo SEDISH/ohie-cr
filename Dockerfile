@@ -51,9 +51,6 @@ ENV PATH $OPENEMPI_HOME/bin:$PATH
 
 EXPOSE 8080
 
-COPY tomcat-users.xml $CATALINA_HOME/conf/
-RUN chmod 777 $CATALINA_HOME/conf/tomcat-users.xml
-
 RUN rm -r /sysnet/openempi-3.3.0c/webapps/ROOT/
 
 # Launch Tomcat

@@ -199,7 +199,8 @@ INSERT INTO identifier_domain (identifier_domain_id, identifier_domain_name, ide
 (50, 'NIST2010', 'NIST2010 Test Domain', '2.16.840.1.113883.3.72.5.9.1', 'ISO', 'NIST2010', current_timestamp, -1),
 (51, 'NIST2010-2', 'NIST2010 Test Domain', '2.16.840.1.113883.3.72.5.9.2', 'ISO', 'NIST2010-2', current_timestamp, -1),
 (52, 'NIST2010-3', 'NIST2010 Test Domain', '2.16.840.1.113883.3.72.5.9.3', 'ISO', 'NIST2010-3', current_timestamp, -1),
-(60, 'ECID', 'Global Identifier Domain', 'ECID', 'ECID', 'ECID', current_timestamp, -1);
+(60, 'ECID', 'Global Identifier Domain', 'ECID', 'ECID', 'ECID', current_timestamp, -1),
+(70, 'Fingerprint', 'Fingerprint Domain', 'Fingerprint', 'Fingerprint', 'Fingerprint', current_timestamp, -1);
 
 -- Definition for index identifier_domain_namespace_identifier_key (OID = 34683):
 CREATE UNIQUE INDEX identifier_domain_namespace_identifier_key ON identifier_domain USING btree (namespace_identifier);

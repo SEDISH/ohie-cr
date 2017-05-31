@@ -184,22 +184,13 @@ CREATE SEQUENCE identifier_seq
     CACHE 1;
 
 INSERT INTO identifier_domain (identifier_domain_id, identifier_domain_name, identifier_domain_description, universal_identifier, universal_identifier_type_code, namespace_identifier, date_created, creator_id) VALUES
-(10, 'SSN', 'Social Security Number', '2.16.840.1.113883.4.1', 'SSN', '2.16.840.1.113883.4.1', current_timestamp, -1),
-(11, 'TIN', 'Taxpayer Identification Number', '2.16.840.1.113883.4.2', 'TIN', '2.16.840.1.113883.4.2', current_timestamp, -1),
-(12, 'VirginiaDLN', 'Virginia Drivers License Number', '2.16.840.1.113883.4.3.51', 'VirginiaDLN', '2.16.840.1.113883.4.3.51', current_timestamp, -1),
-(13, 'OpenMRS', 'OpenMRS Medical Record Number', '35a02490-5c20-11de-8ae4-001d60400e9e', 'OpenMRS', '35a02490-5c20-11de-8ae4-001d60400e9e', current_timestamp, -1),
-(14, 'IHENA','IHENA', '1.3.6.1.4.1.21367.2010.1.2.300', 'ISO', 'IHENA', current_timestamp, -1),
-(15, 'IHELOCAL','IHELOCAL', '1.3.6.1.4.1.21367.2010.1.2.310', 'IS', 'IHELOCAL', current_timestamp, -1),
-(16, 'XREF2005','XREF2005', '1.3.6.1.4.1.21367.2005.1.2', 'ISO', 'XREF2005', current_timestamp, -1),
-(17, 'HIMSS2005','HIMSS2005', '1.3.6.1.4.1.21367.2005.1.1', 'ISO', 'HIMSS2005', current_timestamp, -1),
-(18, 'OpenEMPI','OpenEMPI GID', '2.16.840.1.113883.4.357', 'hl7', '2.16.840.1.113883.4.357', current_timestamp, -1);
-
--- Added support for NIST domain.
-INSERT INTO identifier_domain (identifier_domain_id, identifier_domain_name, identifier_domain_description, universal_identifier, universal_identifier_type_code, namespace_identifier, date_created, creator_id) VALUES
-(50, 'NIST2010', 'NIST2010 Test Domain', '2.16.840.1.113883.3.72.5.9.1', 'ISO', 'NIST2010', current_timestamp, -1),
-(51, 'NIST2010-2', 'NIST2010 Test Domain', '2.16.840.1.113883.3.72.5.9.2', 'ISO', 'NIST2010-2', current_timestamp, -1),
-(52, 'NIST2010-3', 'NIST2010 Test Domain', '2.16.840.1.113883.3.72.5.9.3', 'ISO', 'NIST2010-3', current_timestamp, -1),
-(60, 'ECID', 'Global Identifier Domain', 'ECID', 'ECID', 'ECID', current_timestamp, -1),
+(13, 'iSantePlus_ID', 'iSantne Identifier Domain', '2.25.71280592878078638113873461180761116318', 'PI', '2.25.71280592878078638113873461180761116318', current_timestamp, -1),
+(18, 'OpenEMPI','OpenEMPI GID', '2.16.840.1.113883.4.357', 'hl7', '2.16.840.1.113883.4.357', current_timestamp, -1),
+(60, 'ECID', 'Global Identifier Domain', '2.16.840.1.113883.4.56', 'NI', '2.16.840.1.113883.4.56', current_timestamp, -1),
+(61, 'SCC_LACSN', 'SCC_LACSN', '2.16.840.1.113883.3.3013', 'LACSN', '2.16.840.1.113883.3.3013', current_timestamp, -1),
+(62, 'PIH_ZL_EMR_ID', 'PIH_ZL_EMR_ID', '2.25.219663670403904684', 'PI', '2.25.219663670403904684', current_timestamp, -1),
+(63, 'iSantePlus_ST_Code', 'iSantePlus_ST_Code', '2.25.276946543544871160225835991160192746993', 'PI', '2.25.276946543544871160225835991160192746993', current_timestamp, -1),
+(64, 'iSantePlus_Code_National', 'iSantePlus_Code_National', '2.25.212283553061960040061731875660599129565', 'PI', '2.25.212283553061960040061731875660599129565', current_timestamp, -1),
 (70, 'Fingerprint', 'Fingerprint Domain', 'Fingerprint', 'Fingerprint', 'Fingerprint', current_timestamp, -1);
 
 -- Definition for index identifier_domain_namespace_identifier_key (OID = 34683):

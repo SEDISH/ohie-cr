@@ -206,5 +206,41 @@
          <UniversalId>1.3.6.1.4.1.21367.13.20.5320</UniversalId>
          <UniversalIdType>ISO</UniversalIdType>
      </Identifier>
+     <Identifier type="domain" name="iSantePlus_ID">
+         <NamespaceId>iSantePlus_ID</NamespaceId>
+         <UniversalId>2.25.71280592878078638113873461180761116318</UniversalId>
+         <UniversalIdType>ISO</UniversalIdType>
+     </Identifier>
+     <Identifier type="domain" name="OpenEMPI">
+         <NamespaceId>OpenEMPI</NamespaceId>
+         <UniversalId>2.16.840.1.113883.4.357</UniversalId>
+         <UniversalIdType>ISO</UniversalIdType>
+     </Identifier>
+     <Identifier type="domain" name="ECID">
+         <NamespaceId>ECID</NamespaceId>
+         <UniversalId>2.16.840.1.113883.4.56</UniversalId>
+         <UniversalIdType>ISO</UniversalIdType>
+     </Identifier>
+     <Identifier type="domain" name="PIH_ZL_EMR_ID">
+         <NamespaceId>PIH_ZL_EMR_ID</NamespaceId>
+         <UniversalId>2.25.219663670403904684</UniversalId>
+         <UniversalIdType>ISO</UniversalIdType>
+     </Identifier>
+     <Identifier type="domain" name="SCC_LACSN">
+         <NamespaceId>SCC_LACSN</NamespaceId>
+         <UniversalId>2.16.840.1.113883.3.3013</UniversalId>
+         <UniversalIdType>ISO</UniversalIdType>
+     </Identifier>
+     <Identifier type="domain" name="iSantePlus_ST_Code">
+         <NamespaceId>iSantePlus_ST_Code</NamespaceId>
+         <UniversalId>2.25.212283553061960040061731875660599129565</UniversalId>
+         <UniversalIdType>ISO</UniversalIdType>
+     </Identifier>
+     <Identifier type="domain" name="iSantePlus_ID">
+         <NamespaceId>iSantePlus_ID</NamespaceId>
+         <UniversalId>2.25.276946543544871160225835991160192746993</UniversalId>
+         <UniversalIdType>ISO</UniversalIdType>
+     </Identifier>
+
 
 </Configuration>

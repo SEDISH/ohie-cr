@@ -236,8 +236,8 @@
          <UniversalId>2.25.276946543544871160225835991160192746993</UniversalId>
          <UniversalIdType>PI</UniversalIdType>
      </Identifier>
-     <Identifier type="domain" name="iSantePlus_ID">
-         <NamespaceId>iSantePlus_Code_National</NamespaceId>
+     <Identifier type="domain" name="iSantePlus_Code_National">
+         <NamespaceId>2.25.212283553061960040061731875660599129565</NamespaceId>
          <UniversalId>2.25.212283553061960040061731875660599129565</UniversalId>
          <UniversalIdType>PI</UniversalIdType>
      </Identifier>

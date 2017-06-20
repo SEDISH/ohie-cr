@@ -207,7 +207,7 @@
          <UniversalIdType>ISO</UniversalIdType>
      </Identifier>
      <Identifier type="domain" name="iSantePlus_ID">
-         <NamespaceId>iSantePlus_ID</NamespaceId>
+         <NamespaceId>2.25.71280592878078638113873461180761116318</NamespaceId>
          <UniversalId>2.25.71280592878078638113873461180761116318</UniversalId>
          <UniversalIdType>PI</UniversalIdType>
      </Identifier>
@@ -217,22 +217,22 @@
          <UniversalIdType>hl7</UniversalIdType>
      </Identifier>
      <Identifier type="domain" name="ECID">
-         <NamespaceId>ECID</NamespaceId>
+         <NamespaceId>2.16.840.1.113883.4.56</NamespaceId>
          <UniversalId>2.16.840.1.113883.4.56</UniversalId>
          <UniversalIdType>NI</UniversalIdType>
      </Identifier>
      <Identifier type="domain" name="PIH_ZL_EMR_ID">
-         <NamespaceId>PIH_ZL_EMR_ID</NamespaceId>
-         <UniversalId>2.25.219663670403904684</UniversalId>
+         <NamespaceId>2.25.219663670403904684395483990254527290245</NamespaceId>
+         <UniversalId>2.25.219663670403904684395483990254527290245</UniversalId>
          <UniversalIdType>PI</UniversalIdType>
      </Identifier>
      <Identifier type="domain" name="SCC_LACSN">
-         <NamespaceId>SCC_LACSN</NamespaceId>
+         <NamespaceId>2.16.840.1.113883.3.3013</NamespaceId>
          <UniversalId>2.16.840.1.113883.3.3013</UniversalId>
          <UniversalIdType>LACSN</UniversalIdType>
      </Identifier>
      <Identifier type="domain" name="iSantePlus_ST_Code">
-         <NamespaceId>iSantePlus_ST_Code</NamespaceId>
+         <NamespaceId>2.25.276946543544871160225835991160192746993</NamespaceId>
          <UniversalId>2.25.276946543544871160225835991160192746993</UniversalId>
          <UniversalIdType>PI</UniversalIdType>
      </Identifier>

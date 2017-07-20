@@ -34,11 +34,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<global-identifier>
 		<assign-global-identifier>true</assign-global-identifier>
-		<identifier-domain-name>OpenEMPI</identifier-domain-name>
-		<namespace-identifier>2.16.756.5.30.1.117.200.10.1</namespace-identifier>
-		<universal-identifier>2.16.756.5.30.1.117.200.10.1</universal-identifier>
-		<universal-identifier-type>ISO</universal-identifier-type>
-	</global-identifier>
+		<identifier-domain-name>ECID</identifier-domain-name>
+		<namespace-identifier>2.16.840.1.113883.4.56</namespace-identifier>
+		<universal-identifier>2.16.840.1.113883.4.56</universal-identifier>
+		<universal-identifier-type>NI</universal-identifier-type>
+    	</global-identifier>
     <scheduled-tasks>
         <!--<scheduled-task entity-name="person" schedule-type="schedule-at-fixed-rate" time-unit="seconds">
             <task-name>dirtyRecordMatcher</task-name>
@@ -141,3 +141,4 @@
 		 -->
 	</admin-configuration>
 </mpi-config>
+

@@ -4,6 +4,8 @@ services:
         image: uwitech/ohie-cr
         ports:
             - 8080:8080
+	    - 3600:3600
+            - 3700:3700
         depends_on:
             - openempi-db
     openempi-db:

@@ -4,7 +4,7 @@
 export Receiving_Application
 export Receiving_Facility
 
-/utils/replace-vars /openempi-3.3.0c/openempi-entity-3.3.0c/conf/PixManagerConnections.xml    
+/utils/replace-vars /sysnet/openempi-3.3.0c/openempi-entity-3.3.0c/conf/PixManagerConnections.xml    
 
 sleep 15
 export PGPASSWORD=openempi

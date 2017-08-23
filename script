@@ -1,4 +1,11 @@
+#!/bin/bash
 sleep 15
+
+#start nagios nrpe
+/etc/init.d/nagios-nrpe-server start
+
+#start openEMPI
+
 export PGPASSWORD=openempi
 
 psql -h openempi-db -p 5432 -d openempi -U openempi -f /sysnet/openempi-3.3.0c/openempi-entity-3.3.0c/conf/create_new_database_schema-3.0.0.sql

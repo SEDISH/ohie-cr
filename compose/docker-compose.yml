@@ -8,6 +8,7 @@ services:
             - 3700:3700
         depends_on:
             - openempi-db
+        env_file: .env
     openempi-db:
         extends:
             file: postgresql.yml

@@ -22,7 +22,6 @@
 
 -->
 <!-- The PIX Manager Actor Connections -->
-
 <Configuration>
     <StandardConnection name="openempi-pix-manager">
         <!--The host name of the PIX Manager Server-->
@@ -30,10 +29,10 @@
         <!--The port for PIX transaction-->
         <Port>3600</Port>
         <Identifier name="ReceivingApplication">
-            <NamespaceId>MESA_XREF</NamespaceId>
+            <NamespaceId>${Receiving_Application}</NamespaceId>
         </Identifier>
         <Identifier name="ReceivingFacility">
-            <NamespaceId>XYZ_HOSPITAL</NamespaceId>
+            <NamespaceId>${Receiving_Facility}</NamespaceId>
         </Identifier>
 
         <!-- pixManagerAdapter - required :

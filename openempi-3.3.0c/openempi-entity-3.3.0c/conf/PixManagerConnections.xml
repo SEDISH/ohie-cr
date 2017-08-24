@@ -29,10 +29,10 @@
         <!--The port for PIX transaction-->
         <Port>3600</Port>
         <Identifier name="ReceivingApplication">
-            <NamespaceId>${Receiving_Application}</NamespaceId>
+            <NamespaceId>${RECEIVING_APPLICATION}</NamespaceId>
         </Identifier>
         <Identifier name="ReceivingFacility">
-            <NamespaceId>${Receiving_Facility}</NamespaceId>
+            <NamespaceId>${RECEIVING_FACILITY}</NamespaceId>
         </Identifier>
 
         <!-- pixManagerAdapter - required :

@@ -4,8 +4,8 @@
 sleep 15
 
 #Set variables to the value defined by you
-: ${Receiving_Application=MESA_XREF}
-: ${Receiving_Facility=XYZ_HOSPITAL}
+: ${RECEIVING_APPLICATION=MESA_XREF}
+: ${RECEIVING_FACILITY=XYZ_HOSPITAL}
 
 export Receiving_Application
 export Receiving_Facility

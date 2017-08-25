@@ -184,14 +184,14 @@ CREATE SEQUENCE identifier_seq
     CACHE 1;
 
 INSERT INTO identifier_domain (identifier_domain_id, identifier_domain_name, identifier_domain_description, universal_identifier, universal_identifier_type_code, namespace_identifier, date_created, creator_id) VALUES
-(13, 'iSantePlus_ID', 'iSantne Identifier Domain', '2.25.71280592878078638113873461180761116318', 'PI', '2.25.71280592878078638113873461180761116318', current_timestamp, -1),
+(13, 'iSantePlus_ID', 'iSante Identifier Domain', '2.25.71280592878078638113873461180761116318', 'PI', '2.25.71280592878078638113873461180761116318', current_timestamp, -1),
 (18, 'OpenEMPI','OpenEMPI GID', '2.16.840.1.113883.4.357', 'hl7', '2.16.840.1.113883.4.357', current_timestamp, -1),
 (60, 'ECID', 'Global Identifier Domain', '2.16.840.1.113883.4.56', 'NI', '2.16.840.1.113883.4.56', current_timestamp, -1),
 (61, 'SCC_LACSN', 'SCC_LACSN', '2.16.840.1.113883.3.3013', 'LACSN', '2.16.840.1.113883.3.3013', current_timestamp, -1),
 (62, 'PIH_ZL_EMR_ID', 'PIH_ZL_EMR_ID', '2.25.219663670403904684', 'PI', '2.25.219663670403904684', current_timestamp, -1),
 (63, 'iSantePlus_ST_Code', 'iSantePlus_ST_Code', '2.25.276946543544871160225835991160192746993', 'PI', '2.25.276946543544871160225835991160192746993', current_timestamp, -1),
 (64, 'iSantePlus_Code_National', 'iSantePlus_Code_National', '2.25.212283553061960040061731875660599129565', 'PI', '2.25.212283553061960040061731875660599129565', current_timestamp, -1),
-(70, 'Fingerprint', 'Fingerprint Domain', 'Fingerprint', 'Fingerprint', 'Fingerprint', current_timestamp, -1);
+(70, 'M2Sys_Fingerprint_Registration_ID', 'The Registration ID of the M2Sys BioPlug Nataional Fingerprint Server', '2.25.300969590489438061583573695579607328089', 'NI', '2.25.300969590489438061583573695579607328089', current_timestamp, -1);
 
 -- Definition for index identifier_domain_namespace_identifier_key (OID = 34683):
 CREATE UNIQUE INDEX identifier_domain_namespace_identifier_key ON identifier_domain USING btree (namespace_identifier);

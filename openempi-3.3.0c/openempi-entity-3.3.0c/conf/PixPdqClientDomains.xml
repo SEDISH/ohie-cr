@@ -56,10 +56,10 @@
          <UniversalId>1.3.6.1.4.1.21367.2005.1.2</UniversalId>
          <UniversalIdType>ISO</UniversalIdType>
      </Identifier>
-     <Identifier type="domain" name="Fingerprint">
-         <NamespaceId>Fingerprint</NamespaceId>
-         <UniversalId>Fingerprint</UniversalId>
-         <UniversalIdType>Fingerprint</UniversalIdType>
+     <Identifier type="domain" name="M2Sys_Fingerprint_Registration_ID">
+         <NamespaceId>2.25.300969590489438061583573695579607328089</NamespaceId>
+         <UniversalId>2.25.300969590489438061583573695579607328089</UniversalId>
+         <UniversalIdType>NI</UniversalIdType>
      </Identifier>
      <Identifier type="domain" name="NIST">
          <NamespaceId>NIST</NamespaceId>

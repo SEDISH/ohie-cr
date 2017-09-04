@@ -55,8 +55,8 @@ RUN rm -r /sysnet/openempi-3.3.0c/webapps/ROOT/
 
 # Launch Tomcat
 WORKDIR /
-COPY /script /script
-RUN chmod +x /script
+COPY /cmd.sh /cmd.sh
+RUN chmod +x /cmd.sh
 
-CMD /script
+CMD /cmd.sh
 

@@ -241,6 +241,15 @@
          <UniversalId>2.25.212283553061960040061731875660599129565</UniversalId>
          <UniversalIdType>PI</UniversalIdType>
      </Identifier>
-
+     <Identifier type="domain" name="Numero_d_identite_fiscal">
+         <NamespaceId>2.25.307840736944326039110750256350119357236</NamespaceId>
+         <UniversalId>2.25.307840736944326039110750256350119357236</UniversalId>
+         <UniversalIdType>TAX</UniversalIdType>
+     </Identifier>
+     <Identifier type="domain" name="Carte_d_identification_nationale">
+         <NamespaceId>2.25.307840790819476548810499819960005585716</NamespaceId>
+         <UniversalId>2.25.307840790819476548810499819960005585716</UniversalId>
+         <UniversalIdType>NNHTI</UniversalIdType>
+     </Identifier>
 
 </Configuration>

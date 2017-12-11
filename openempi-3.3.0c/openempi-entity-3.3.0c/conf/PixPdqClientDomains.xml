@@ -251,5 +251,25 @@
          <UniversalId>2.25.307840790819476548810499819960005585716</UniversalId>
          <UniversalIdType>NNHTI</UniversalIdType>
      </Identifier>
+     <Identifier type="domain" name="ND99936_ST_Code">
+         <NamespaceId>2.25.98469842422964976183934078744219367743</NamespaceId>
+         <UniversalId>2.25.98469842422964976183934078744219367743</UniversalId>
+         <UniversalIdType>PI</UniversalIdType>
+     </Identifier>
+     <Identifier type="domain" name="ND99936_iSantePlus_ID">
+         <NamespaceId>2.25.304839112889521879656416223280408889408</NamespaceId>
+         <UniversalId>2.25.304839112889521879656416223280408889408</UniversalId>
+         <UniversalIdType>PI</UniversalIdType>
+     </Identifier>
+     <Identifier type="domain" name="131341_ST_Code">
+         <NamespaceId>2.25.208322189716607285511933459891287504724</NamespaceId>
+         <UniversalId>2.25.208322189716607285511933459891287504724</UniversalId>
+         <UniversalIdType>PI</UniversalIdType>
+     </Identifier>
+     <Identifier type="domain" name="131341_iSantePlus_ID">
+         <NamespaceId>2.25.33859482078892163251779738706676018540</NamespaceId>
+         <UniversalId>2.25.33859482078892163251779738706676018540</UniversalId>
+         <UniversalIdType>PI</UniversalIdType>
+     </Identifier>
 
 </Configuration>

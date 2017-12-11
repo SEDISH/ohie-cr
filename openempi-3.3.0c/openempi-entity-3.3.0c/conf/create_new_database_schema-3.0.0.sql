@@ -194,6 +194,11 @@ INSERT INTO identifier_domain (identifier_domain_id, identifier_domain_name, ide
 (70, 'M2Sys_Fingerprint_Registration_ID', 'The Registration ID of the M2Sys BioPlug Nataional Fingerprint Server', '2.25.300969590489438061583573695579607328089', 'NI', '2.25.300969590489438061583573695579607328089', current_timestamp, -1),
 (71, 'Numero_d_identite_fiscal', 'The Haiti Tax Identification Number (NIF) is issued by the Direction Générale des Impôts (DGI) since 1987.  Any Haitian natural or legal person gets this 10-digit number.', '2.25.307840736944326039110750256350119357236', 'TAX', '2.25.307840736944326039110750256350119357236', current_timestamp, -1),
 (72, 'Carte_d_identification_nationale', 'The Haiti national identification card is meant to replace the fiscal identity card. Created 2005.', '2.25.307840790819476548810499819960005585716', 'NNHTI', '2.25.307840790819476548810499819960005585716', current_timestamp, -1);
+(73, 'ND99936_ST_Code', 'FOSREF Montrouis ST Code Site Code ND99936. Created 20171211.', '2.25.98469842422964976183934078744219367743', 'PI', '2.25.98469842422964976183934078744219367743', current_timestamp, -1);
+(74, 'ND99936_iSantePlus_ID', 'FOSREF Montrouis iSantePlus_ID Site Code ND99936. Created 20171211.', '2.25.304839112889521879656416223280408889408', 'PI', '2.25.304839112889521879656416223280408889408', current_timestamp, -1);
+(75, '131341_ST_Code', 'Harry Bordes de Beudet ST Code Site Code 131341. Created 20171211.', '2.25.208322189716607285511933459891287504724', 'PI', '2.25.208322189716607285511933459891287504724', current_timestamp, -1);
+(76, '131341_iSantePlus_ID', 'Harry Bordes de Beudet iSantePlus_ID Site Code 131341. Created 20171211.', '2.25.33859482078892163251779738706676018540', 'PI', '2.25.33859482078892163251779738706676018540', current_timestamp, -1);
+
 
 -- Definition for index identifier_domain_namespace_identifier_key (OID = 34683):
 CREATE UNIQUE INDEX identifier_domain_namespace_identifier_key ON identifier_domain USING btree (namespace_identifier);

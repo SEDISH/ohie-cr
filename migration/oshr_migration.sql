@@ -33,11 +33,38 @@ BEGIN
                 
 		IF done = FALSE THEN
 			SET tmpdone = done;
-            
-            SELECT identifier FROM patient_identifier WHERE patient_id = pid AND identifier_type = 8 LIMIT 1 INTO isanteplus_id;
-            SELECT identifier FROM patient_identifier WHERE patient_id = pid AND identifier_type = 3 LIMIT 1 INTO st_code;
-            SELECT identifier FROM patient_identifier WHERE patient_id = pid AND identifier_type = 4 LIMIT 1 INTO code_national;
-            SELECT identifier FROM patient_identifier WHERE patient_id = pid AND identifier_type = 12 LIMIT 1 INTO ecid;
+
+						SELECT identifier
+						FROM patient_identifier
+						LEFT JOIN patient_identifier_type pidt
+						ON identifier_type = pidt.patient_identifier_type_id
+						WHERE patient_id = pid
+						AND pidt.uuid = "05a29f94-c0ed-11e2-94be-8c13b969e334"
+						LIMIT 1 INTO isanteplus_id;
+
+            SELECT identifier
+						FROM patient_identifier
+						LEFT JOIN patient_identifier_type pidt
+						ON identifier_type = pidt.patient_identifier_type_id
+						WHERE patient_id = pid
+						AND pidt.uuid = "d059f6d0-9e42-4760-8de1-8316b48bc5f1"
+						LIMIT 1 INTO st_code;
+
+            SELECT identifier
+						FROM patient_identifier
+						LEFT JOIN patient_identifier_type pidt
+						ON identifier_type = pidt.patient_identifier_type_id
+						WHERE patient_id = pid
+						AND pidt.uuid = "9fb4533d-4fd5-4276-875b-2ab41597f5dd"
+						LIMIT 1 INTO code_national;
+
+            SELECT identifier
+						FROM patient_identifier
+						LEFT JOIN patient_identifier_type pidt
+						ON identifier_type = pidt.patient_identifier_type_id
+						WHERE patient_id = pid
+						AND pidt.uuid = "f54ed6b9-f5b9-4fd5-a588-8f7561a78401"
+						LIMIT 1 INTO ecid;
 
 			IF isanteplus_id IS NULL THEN
 				SET isanteplus_id = '';

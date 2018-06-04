@@ -100,5 +100,4 @@ JOIN person_name nam ON nam.person_id = per.person_id
 JOIN person_address adr ON adr.person_id = per.person_id
 JOIN tmp_pid pid ON pat.patient_id = pid.patient_id
 INTO OUTFILE '/var/lib/mysql-files/pixpdq.csv'
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"';
+FIELDS TERMINATED BY ',';

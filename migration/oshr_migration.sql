@@ -91,8 +91,9 @@ DELIMITER ;
 
 CALL create_pid();
 
-SELECT pid.isanteplus_id, pid.st_code, pid.code_national, pid.ecid, nam.family_name, nam.given_name, coalesce(per.birthdate, ''),
-coalesce(per.gender, 'O'), coalesce(adr.address1, ''), coalesce(adr.city_village, ''), coalesce(adr.state_province, '')
+SELECT pid.isanteplus_id, pid.st_code, pid.code_national, nam.family_name, nam.given_name, coalesce(per.birthdate, ''),
+coalesce(per.gender, 'O'), coalesce(adr.address1, ''), coalesce(adr.city_village, ''), coalesce(adr.state_province, ''),
+coalesce(adr.postal_code, ''), pid.ecid
 FROM patient pat
 JOIN person per ON pat.patient_id = per.person_id
 JOIN person_name nam ON nam.person_id = per.person_id

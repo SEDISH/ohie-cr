@@ -31,53 +31,53 @@
 		<field-name>identifier</field-name>
         </field>
         <field
-                datatype="String"
-                is-identifier="true"
-                identifier-domain-name="2.16.840.1.113883.4.56"
-                namespace-identifier="2.16.840.1.113883.4.56">
-		<column-index>4</column-index>
-		<field-name>identifier</field-name>
-        </field>
-        <field
                 datatype="String">
-            <column-index>5</column-index>
+            <column-index>4</column-index>
             <field-name>familyName</field-name>
         </field>
         <field
                 datatype="String">
-            <column-index>6</column-index>
+            <column-index>5</column-index>
             <field-name>givenName</field-name>
         </field>
         <field
                 datatype="Date"
                 date-format-string="yyyy-MM-dd">
-            <column-index>7</column-index>
+            <column-index>6</column-index>
             <field-name>dateOfBirth</field-name>
         </field>
         <field
                 datatype="String">
-            <column-index>8</column-index>
+            <column-index>7</column-index>
             <field-name>gender</field-name>
         </field>
         <field
                 datatype="String">
-            <column-index>9</column-index>
+            <column-index>8</column-index>
             <field-name>address1</field-name>
         </field>
         <field
                 datatype="String">
-            <column-index>10</column-index>
+            <column-index>9</column-index>
             <field-name>city</field-name>
         </field>
         <field
                 datatype="String">
-            <column-index>11</column-index>
+            <column-index>10</column-index>
             <field-name>state</field-name>
         </field>
         <field
                 datatype="String">
-            <column-index>12</column-index>
+            <column-index>11</column-index>
             <field-name>postalCode</field-name>
+        </field>
+        <field
+                datatype="String"
+                is-identifier="true"
+                identifier-domain-name="2.16.840.1.113883.4.56"
+                namespace-identifier="2.16.840.1.113883.4.56">
+		        <column-index>12</column-index>
+		        <field-name>identifier</field-name>
         </field>
     </fields>
 </file-loader-map>

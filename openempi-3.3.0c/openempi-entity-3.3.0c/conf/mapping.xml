@@ -66,7 +66,6 @@
             <column-index>10</column-index>
             <field-name>state</field-name>
         </field>
-<<<<<<< HEAD
         <field
                 datatype="String">
             <column-index>11</column-index>
@@ -80,7 +79,5 @@
 		        <column-index>12</column-index>
 		        <field-name>identifier</field-name>
         </field>
-=======
->>>>>>> d5fabbf5953cfcf348063f5a76829e79aa78f75b
     </fields>
 </file-loader-map>

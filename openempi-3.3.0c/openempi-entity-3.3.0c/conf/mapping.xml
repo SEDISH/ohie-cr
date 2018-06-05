@@ -74,10 +74,5 @@
             <column-index>11</column-index>
             <field-name>state</field-name>
         </field>
-        <field
-                datatype="String">
-            <column-index>12</column-index>
-            <field-name>postalCode</field-name>
-        </field>
     </fields>
 </file-loader-map>

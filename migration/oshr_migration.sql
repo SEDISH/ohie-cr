@@ -25,12 +25,12 @@ BEGIN
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
 
     SET done = FALSE;
-        
+
 	OPEN pcur;
 
 	REPEAT
 		FETCH pcur INTO pid;
-                
+
 		IF done = FALSE THEN
 			SET tmpdone = done;
 
@@ -77,23 +77,22 @@ BEGIN
             END IF;
 			IF ecid IS NULL THEN
 				SET ecid = '';
-            END IF; 
+            END IF;
 
 			INSERT INTO tmp_pid(patient_id, isanteplus_id, st_code, code_national, ecid) VALUES(pid, isanteplus_id, st_code, code_national, ecid);
-            
+
             SET done = tmpdone;
         END IF;
 	UNTIL done = TRUE END REPEAT;
-    
+
     CLOSE pcur;
 END //
 DELIMITER ;
 
 CALL create_pid();
 
-SELECT pid.isanteplus_id, pid.st_code, pid.code_national, pid.ecid, nam.family_name, nam.given_name, coalesce(per.birthdate, ''), 
-coalesce(per.gender, ''), coalesce(adr.address1, ''), coalesce(adr.city_village, ''), coalesce(adr.state_province, ''), 
-coalesce(adr.postal_code, '')
+SELECT pid.isanteplus_id, pid.st_code, pid.code_national, pid.ecid, nam.family_name, nam.given_name, coalesce(per.birthdate, ''),
+coalesce(per.gender, 'O'), coalesce(adr.address1, ''), coalesce(adr.city_village, ''), coalesce(adr.state_province, '')
 FROM patient pat
 JOIN person per ON pat.patient_id = per.person_id
 JOIN person_name nam ON nam.person_id = per.person_id

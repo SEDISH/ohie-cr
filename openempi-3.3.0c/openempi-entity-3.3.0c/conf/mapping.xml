@@ -3,7 +3,7 @@
         xmlns="http://configuration.openempi.openhie.org/fileloadermap"
         xmlns:fl="http://configuration.openempi.openhie.org/fileloadermap"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        delimiter=","
+        delimiter="\^"
         header-first-line="false">
     <fields>
         <field

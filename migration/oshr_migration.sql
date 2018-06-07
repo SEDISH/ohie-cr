@@ -38,7 +38,7 @@ BEGIN
 						FROM patient_identifier
 						LEFT JOIN patient_identifier_type pidt
 						ON identifier_type = pidt.patient_identifier_type_id
-						WHERE patient_id = pid
+						WHERE patient_id = pid AND voided = 0
 						AND pidt.uuid = "05a29f94-c0ed-11e2-94be-8c13b969e334"
 						LIMIT 1 INTO isanteplus_id;
 
@@ -46,7 +46,7 @@ BEGIN
 						FROM patient_identifier
 						LEFT JOIN patient_identifier_type pidt
 						ON identifier_type = pidt.patient_identifier_type_id
-						WHERE patient_id = pid
+						WHERE patient_id = pid AND voided = 0
 						AND pidt.uuid = "d059f6d0-9e42-4760-8de1-8316b48bc5f1"
 						LIMIT 1 INTO st_code;
 
@@ -54,7 +54,7 @@ BEGIN
 						FROM patient_identifier
 						LEFT JOIN patient_identifier_type pidt
 						ON identifier_type = pidt.patient_identifier_type_id
-						WHERE patient_id = pid
+						WHERE patient_id = pid AND voided = 0
 						AND pidt.uuid = "9fb4533d-4fd5-4276-875b-2ab41597f5dd"
 						LIMIT 1 INTO code_national;
 
@@ -62,7 +62,7 @@ BEGIN
 						FROM patient_identifier
 						LEFT JOIN patient_identifier_type pidt
 						ON identifier_type = pidt.patient_identifier_type_id
-						WHERE patient_id = pid
+						WHERE patient_id = pid AND voided = 0
 						AND pidt.uuid = "f54ed6b9-f5b9-4fd5-a588-8f7561a78401"
 						LIMIT 1 INTO ecid;
 
@@ -91,13 +91,17 @@ DELIMITER ;
 
 CALL create_pid();
 
+SELECT 'isanteplus_id', 'st_code', 'code_national', 'family_name', 'given_name', 'birthdate',
+				'gender', 'address1', 'city_village', 'state_province', 'postal_code', 'ecid'
+UNION ALL
 SELECT pid.isanteplus_id, pid.st_code, pid.code_national, nam.family_name, nam.given_name, coalesce(per.birthdate, ''),
 coalesce(per.gender, 'O'), coalesce(adr.address1, ''), coalesce(adr.city_village, ''), coalesce(adr.state_province, ''),
 coalesce(adr.postal_code, ''), pid.ecid
 FROM patient pat
-JOIN person per ON pat.patient_id = per.person_id
-JOIN person_name nam ON nam.person_id = per.person_id
-JOIN person_address adr ON adr.person_id = per.person_id
+JOIN person per ON pat.patient_id = per.person_id AND per.voided = 0
+JOIN person_name nam ON nam.person_id = per.person_id AND nam.voided = 0
+JOIN person_address adr ON adr.person_id = per.person_id AND adr.voided = 0 AND adr.preferred = 1
 JOIN tmp_pid pid ON pat.patient_id = pid.patient_id
+WHERE pat.voided = 0
 INTO OUTFILE '/var/lib/mysql-files/pixpdq.csv'
 FIELDS TERMINATED BY '\^';

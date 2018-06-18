@@ -83,7 +83,7 @@
                 datatype="String"
                 is-identifier="true"
                 identifier-domain-name="2.25.36136748588937772373969278066039786242"
-                namespace-identifier="2.25.361367485889377723739692780660397862428">
+                namespace-identifier="2.25.36136748588937772373969278066039786242">
 			<column-index>13</column-index>
 			<field-name>identifier</field-name>
         </field>

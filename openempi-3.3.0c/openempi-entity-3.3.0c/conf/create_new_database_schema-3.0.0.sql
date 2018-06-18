@@ -137,7 +137,7 @@ CREATE SEQUENCE audit_event_seq
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
-  
+
 -- Definition for sequence hibernate_sequence (OID = 34671):
 CREATE SEQUENCE hibernate_sequence
     INCREMENT BY 1
@@ -152,7 +152,7 @@ CREATE SEQUENCE identifier_domain_seq
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
-    
+
 -- Definition for sequence identifier_domain_attribute_seq
 CREATE SEQUENCE identifier_domain_attribute_seq
     INCREMENT BY 1
@@ -167,7 +167,7 @@ CREATE SEQUENCE user_file_seq
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
-    
+
 -- Definition for sequence user_session_seq (OID = 34681):
 CREATE SEQUENCE user_session_seq
     INCREMENT BY 1
@@ -193,11 +193,11 @@ INSERT INTO identifier_domain (identifier_domain_id, identifier_domain_name, ide
 (64, 'iSantePlus_Code_National', 'iSantePlus_Code_National', '2.25.212283553061960040061731875660599129565', 'PI', '2.25.212283553061960040061731875660599129565', current_timestamp, -1),
 (70, 'M2Sys_Fingerprint_Registration_ID', 'The Registration ID of the M2Sys BioPlug Nataional Fingerprint Server', '2.25.300969590489438061583573695579607328089', 'NI', '2.25.300969590489438061583573695579607328089', current_timestamp, -1),
 (71, 'Numero_d_identite_fiscal', 'The Haiti Tax Identification Number (NIF) is issued by the Direction Générale des Impôts (DGI) since 1987.  Any Haitian natural or legal person gets this 10-digit number.', '2.25.307840736944326039110750256350119357236', 'TAX', '2.25.307840736944326039110750256350119357236', current_timestamp, -1),
-(72, 'Carte_d_identification_nationale', 'The Haiti national identification card is meant to replace the fiscal identity card. Created 2005.', '2.25.307840790819476548810499819960005585716', 'NNHTI', '2.25.307840790819476548810499819960005585716', current_timestamp, -1);
-(73, 'ND99936_ST_Code', 'FOSREF Montrouis ST Code Site Code ND99936. Created 20171211.', '2.25.98469842422964976183934078744219367743', 'PI', '2.25.98469842422964976183934078744219367743', current_timestamp, -1);
-(74, 'ND99936_iSantePlus_ID', 'FOSREF Montrouis iSantePlus_ID Site Code ND99936. Created 20171211.', '2.25.304839112889521879656416223280408889408', 'PI', '2.25.304839112889521879656416223280408889408', current_timestamp, -1);
-(75, '131341_ST_Code', 'Harry Bordes de Beudet ST Code Site Code 131341. Created 20171211.', '2.25.208322189716607285511933459891287504724', 'PI', '2.25.208322189716607285511933459891287504724', current_timestamp, -1);
-(76, '131341_iSantePlus_ID', 'Harry Bordes de Beudet iSantePlus_ID Site Code 131341. Created 20171211.', '2.25.33859482078892163251779738706676018540', 'PI', '2.25.33859482078892163251779738706676018540', current_timestamp, -1);
+(72, 'Carte_d_identification_nationale', 'The Haiti national identification card is meant to replace the fiscal identity card. Created 2005.', '2.25.307840790819476548810499819960005585716', 'NNHTI', '2.25.307840790819476548810499819960005585716', current_timestamp, -1),
+(73, 'ND99936_ST_Code', 'FOSREF Montrouis ST Code Site Code ND99936. Created 20171211.', '2.25.98469842422964976183934078744219367743', 'PI', '2.25.98469842422964976183934078744219367743', current_timestamp, -1),
+(74, 'ND99936_iSantePlus_ID', 'FOSREF Montrouis iSantePlus_ID Site Code ND99936. Created 20171211.', '2.25.304839112889521879656416223280408889408', 'PI', '2.25.304839112889521879656416223280408889408', current_timestamp, -1),
+(75, '131341_ST_Code', 'Harry Bordes de Beudet ST Code Site Code 131341. Created 20171211.', '2.25.208322189716607285511933459891287504724', 'PI', '2.25.208322189716607285511933459891287504724', current_timestamp, -1),
+(76, '131341_iSantePlus_ID', 'Harry Bordes de Beudet iSantePlus_ID Site Code 131341. Created 20171211.', '2.25.33859482078892163251779738706676018540', 'PI', '2.25.33859482078892163251779738706676018540', current_timestamp, -1),
 (77, 'Old_iSante_ID', 'Old iSante Identifier Domain', '2.25.36136748588937772373969278066039786242', 'PI', '2.25.36136748588937772373969278066039786242', current_timestamp, -1);
 
 
@@ -400,7 +400,7 @@ CREATE SEQUENCE report_query_seq
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
-    
+
 CREATE SEQUENCE report_parameter_seq
     INCREMENT BY 1
     NO MAXVALUE
@@ -468,7 +468,7 @@ CREATE TABLE role_permission (
     FOREIGN KEY (permission_id)
     REFERENCES permission(permission_id)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION, 
+    ON UPDATE NO ACTION,
   CONSTRAINT fk_role_id
     FOREIGN KEY (role_id)
     REFERENCES "role"(role_id)
@@ -673,10 +673,10 @@ DROP TABLE IF EXISTS data_profile;
 
 CREATE TABLE data_profile
 (
-  data_profile_id integer NOT NULL, 
-  date_initiated  timestamp without time zone NOT NULL, 
-  date_completed  timestamp without time zone, 
-  entity_version_id integer, 
+  data_profile_id integer NOT NULL,
+  date_initiated  timestamp without time zone NOT NULL,
+  date_completed  timestamp without time zone,
+  entity_version_id integer,
   data_source_id integer,
   CONSTRAINT data_profile_pkey PRIMARY KEY (data_profile_id)
 ) WITHOUT OIDS;
@@ -738,7 +738,7 @@ CREATE INDEX idx_attribute_id
   USING btree
   (attribute_id);
 
-   
+
 DROP TABLE IF EXISTS audit_event;
 DROP TABLE IF EXISTS audit_event_type;
 CREATE TABLE audit_event (
@@ -899,8 +899,8 @@ CREATE TABLE identifier_pre_update (
   CONSTRAINT fk_identifier_update_entry_id
     FOREIGN KEY (identifier_update_entry_id)
     REFERENCES identifier_update_entry(identifier_update_entry_id)
-    ON DELETE CASCADE 
-    ON UPDATE NO ACTION, 
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
   CONSTRAINT identifier_update_event_id
     FOREIGN KEY (identifier_update_event_id)
     REFERENCES identifier_update_event(identifier_update_event_id)
@@ -917,8 +917,8 @@ CREATE TABLE identifier_post_update (
   CONSTRAINT fk_identifier_update_entry_id
     FOREIGN KEY (identifier_update_entry_id)
     REFERENCES identifier_update_entry(identifier_update_entry_id)
-    ON DELETE CASCADE 
-    ON UPDATE NO ACTION, 
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
   CONSTRAINT identifier_update_event_id
     FOREIGN KEY (identifier_update_event_id)
     REFERENCES identifier_update_event(identifier_update_event_id)
@@ -1003,21 +1003,21 @@ INSERT INTO job_status
 -- Table: job_entry
 CREATE TABLE job_entry
 (
-   job_entry_id integer NOT NULL, 
-   job_type_cd integer NOT NULL, 
+   job_entry_id integer NOT NULL,
+   job_type_cd integer NOT NULL,
    job_status_cd integer NOT NULL,
    job_description varchar(255),
    job_parameters varchar(1024),
    entity_version_id integer NOT NULL,
-   date_created timestamp with time zone NOT NULL, 
-   date_started timestamp with time zone, 
-   date_completed timestamp without time zone, 
-   items_processed integer DEFAULT 0, 
-   items_successful integer DEFAULT 0, 
+   date_created timestamp with time zone NOT NULL,
+   date_started timestamp with time zone,
+   date_completed timestamp without time zone,
+   items_processed integer DEFAULT 0,
+   items_successful integer DEFAULT 0,
    items_errored integer DEFAULT 0,
-   CONSTRAINT job_entry_pk PRIMARY KEY (job_entry_id), 
-   CONSTRAINT fk_job_entry_job_type_code FOREIGN KEY (job_type_cd) REFERENCES job_type (job_type_cd) ON UPDATE NO ACTION ON DELETE NO ACTION, 
-   CONSTRAINT fk_job_entry_entity_version_id FOREIGN KEY (entity_version_id) REFERENCES entity (entity_version_id) ON UPDATE NO ACTION ON DELETE NO ACTION, 
+   CONSTRAINT job_entry_pk PRIMARY KEY (job_entry_id),
+   CONSTRAINT fk_job_entry_job_type_code FOREIGN KEY (job_type_cd) REFERENCES job_type (job_type_cd) ON UPDATE NO ACTION ON DELETE NO ACTION,
+   CONSTRAINT fk_job_entry_entity_version_id FOREIGN KEY (entity_version_id) REFERENCES entity (entity_version_id) ON UPDATE NO ACTION ON DELETE NO ACTION,
    CONSTRAINT fk_job_entry_job_status_code FOREIGN KEY (job_status_cd) REFERENCES job_status (job_status_cd) ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
@@ -1030,9 +1030,9 @@ CREATE TABLE job_entry_event_log
 (
    job_entry_event_log_id integer NOT NULL,
    job_entry_id integer NOT NULL,
-   log_message varchar(255) NOT NULL, 
-   date_created timestamp with time zone NOT NULL, 
-   CONSTRAINT job_entry_event_log_pk PRIMARY KEY (job_entry_event_log_id), 
+   log_message varchar(255) NOT NULL,
+   date_created timestamp with time zone NOT NULL,
+   CONSTRAINT job_entry_event_log_pk PRIMARY KEY (job_entry_event_log_id),
    CONSTRAINT fk_job_entry_id FOREIGN KEY (job_entry_id) REFERENCES job_entry (job_entry_id) ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
@@ -1043,6 +1043,3 @@ CREATE SEQUENCE job_entry_seq INCREMENT BY 1 NO MAXVALUE NO MINVALUE CACHE 1;
 
 DROP SEQUENCE IF EXISTS job_entry_event_log_seq;
 CREATE SEQUENCE job_entry_event_log_seq INCREMENT BY 1 NO MAXVALUE NO MINVALUE CACHE 1;
-
-
-

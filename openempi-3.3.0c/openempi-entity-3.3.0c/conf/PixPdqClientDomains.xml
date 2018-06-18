@@ -211,7 +211,7 @@
          <UniversalId>2.25.71280592878078638113873461180761116318</UniversalId>
          <UniversalIdType>PI</UniversalIdType>
      </Identifier>
-    <Identifier type="domain" name="Old iSante ID">
+    <Identifier type="domain" name="Old_iSante_ID">
         <NamespaceId>2.25.36136748588937772373969278066039786242</NamespaceId>
         <UniversalId>2.25.36136748588937772373969278066039786242</UniversalId>
         <UniversalIdType>PI</UniversalIdType>

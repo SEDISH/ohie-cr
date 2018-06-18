@@ -5,9 +5,10 @@ DROP PROCEDURE IF EXISTS create_pid;
 CREATE TABLE tmp_pid(
 	patient_id bigint,
 	isanteplus_id VARCHAR(250),
-    st_code VARCHAR(250),
+	st_code VARCHAR(250),
 	code_national VARCHAR(250),
-    ecid VARCHAR(250)
+	ecid VARCHAR(250),
+	old_id VARCHAR(250)
 );
 
 
@@ -19,6 +20,7 @@ BEGIN
     DECLARE st_code VARCHAR(250);
 	DECLARE code_national VARCHAR(250);
     DECLARE ecid VARCHAR(250);
+    DECLARE old_id VARCHAR(250);
     DECLARE done TINYINT;
     DECLARE tmpdone TINYINT;
 	DECLARE pcur CURSOR FOR SELECT patient_id FROM patient;
@@ -65,7 +67,13 @@ BEGIN
 						WHERE patient_id = pid AND voided = 0
 						AND pidt.uuid = "f54ed6b9-f5b9-4fd5-a588-8f7561a78401"
 						LIMIT 1 INTO ecid;
-
+            SELECT identifier
+						FROM patient_identifier
+						LEFT JOIN patient_identifier_type pidt
+						ON identifier_type = pidt.patient_identifier_type_id
+						WHERE patient_id = pid AND voided = 0
+						AND pidt.uuid = "0e0c7cc2-3491-4675-b705-746e372ff346"
+						LIMIT 1 INTO old_id;
 			IF isanteplus_id IS NULL THEN
 				SET isanteplus_id = '';
             END IF;
@@ -78,8 +86,11 @@ BEGIN
 			IF ecid IS NULL THEN
 				SET ecid = '';
             END IF;
+			IF old_id IS NULL THEN
+				SET old_id = '';
+            END IF;
 
-			INSERT INTO tmp_pid(patient_id, isanteplus_id, st_code, code_national, ecid) VALUES(pid, isanteplus_id, st_code, code_national, ecid);
+			INSERT INTO tmp_pid(patient_id, isanteplus_id, st_code, code_national, ecid, old_id) VALUES(pid, isanteplus_id, st_code, code_national, ecid, old_id);
 
             SET done = tmpdone;
         END IF;
@@ -92,11 +103,11 @@ DELIMITER ;
 CALL create_pid();
 
 SELECT 'isanteplus_id', 'st_code', 'code_national', 'family_name', 'given_name', 'birthdate',
-				'gender', 'address1', 'city_village', 'state_province', 'postal_code', 'ecid'
+				'gender', 'address1', 'city_village', 'state_province', 'postal_code', 'ecid', 'old_id'
 UNION ALL
 SELECT pid.isanteplus_id, pid.st_code, pid.code_national, nam.family_name, nam.given_name, coalesce(per.birthdate, ''),
 coalesce(per.gender, 'O'), coalesce(adr.address1, ''), coalesce(adr.city_village, ''), coalesce(adr.state_province, ''),
-coalesce(adr.postal_code, ''), pid.ecid
+coalesce(adr.postal_code, ''), pid.ecid, pid.old_id
 FROM patient pat
 JOIN person per ON pat.patient_id = per.person_id AND per.voided = 0
 JOIN person_name nam ON nam.person_id = per.person_id AND nam.voided = 0

@@ -198,7 +198,7 @@ INSERT INTO identifier_domain (identifier_domain_id, identifier_domain_name, ide
 (74, 'ND99936_iSantePlus_ID', 'FOSREF Montrouis iSantePlus_ID Site Code ND99936. Created 20171211.', '2.25.304839112889521879656416223280408889408', 'PI', '2.25.304839112889521879656416223280408889408', current_timestamp, -1);
 (75, '131341_ST_Code', 'Harry Bordes de Beudet ST Code Site Code 131341. Created 20171211.', '2.25.208322189716607285511933459891287504724', 'PI', '2.25.208322189716607285511933459891287504724', current_timestamp, -1);
 (76, '131341_iSantePlus_ID', 'Harry Bordes de Beudet iSantePlus_ID Site Code 131341. Created 20171211.', '2.25.33859482078892163251779738706676018540', 'PI', '2.25.33859482078892163251779738706676018540', current_timestamp, -1);
-(77, 'Old_iSante_ID', 'Old iSante Identifier Domain', '2.25.36136748588937772373969278066039786242', 'PI', '2.25.36136748588937772373969278066039786242', current_timestamp, -1),
+(77, 'Old_iSante_ID', 'Old iSante Identifier Domain', '2.25.36136748588937772373969278066039786242', 'PI', '2.25.36136748588937772373969278066039786242', current_timestamp, -1);
 
 
 -- Definition for index identifier_domain_namespace_identifier_key (OID = 34683):

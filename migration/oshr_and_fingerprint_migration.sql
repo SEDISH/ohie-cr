@@ -104,6 +104,10 @@ BEGIN
 
 			INSERT INTO tmp_pid(patient_id, isanteplus_id, st_code, code_national, ecid, old_id, fingerprint_id) VALUES(pid, isanteplus_id, st_code, code_national, ecid, old_id, fingerprint_id);
             SET fingerprint_id = '';
+            SET old_id = '';
+            SET code_national = '';
+            SET st_code = '';
+            SET isanteplus_id = '';
             SET done = tmpdone;
         END IF;
 	UNTIL done = TRUE END REPEAT;
@@ -115,11 +119,11 @@ DELIMITER ;
 CALL create_pid();
 
 SELECT 'isanteplus_id', 'st_code', 'code_national', 'family_name', 'given_name', 'birthdate',
-				'gender', 'address1', 'city_village', 'state_province', 'postal_code', 'fingerprint_id', 'ecid', 'old_id'
+				'gender', 'address1', 'city_village', 'state_province', 'postal_code', 'fingerprint_id', 'old_id', 'ecid'
 UNION ALL
 SELECT pid.isanteplus_id, pid.st_code, pid.code_national, nam.family_name, nam.given_name, coalesce(per.birthdate, ''),
 coalesce(per.gender, 'O'), coalesce(adr.address1, ''), coalesce(adr.city_village, ''), coalesce(adr.state_province, ''),
-coalesce(adr.postal_code, ''), pid.fingerprint_id, pid.ecid, pid.old_id
+coalesce(adr.postal_code, ''), pid.fingerprint_id, pid.old_id, pid.ecid
 FROM patient pat
 JOIN person per ON pat.patient_id = per.person_id AND per.voided = 0
 JOIN person_name nam ON nam.person_id = per.person_id AND nam.voided = 0

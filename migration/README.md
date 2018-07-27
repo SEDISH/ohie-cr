@@ -8,5 +8,5 @@ Script generate result based on below databases:
 ## Running
 To execute migration script, run:
 ```mysql
-mysql -uroot -p openmrs < oshr_migration.sql
+mysql -uroot -p openmrs < oshr_and_fingerprint_migration.sql
 ```

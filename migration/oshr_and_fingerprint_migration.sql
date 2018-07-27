@@ -8,7 +8,8 @@ CREATE TABLE tmp_pid(
 	st_code VARCHAR(250),
 	code_national VARCHAR(250),
 	ecid VARCHAR(250),
-	old_id VARCHAR(250)
+	old_id VARCHAR(250),
+	fingerprint_id VARCHAR(250)
 );
 
 
@@ -21,6 +22,7 @@ BEGIN
 	DECLARE code_national VARCHAR(250);
     DECLARE ecid VARCHAR(250);
     DECLARE old_id VARCHAR(250);
+    DECLARE fingerprint_id VARCHAR(250);
     DECLARE done TINYINT;
     DECLARE tmpdone TINYINT;
 	DECLARE pcur CURSOR FOR SELECT patient_id FROM patient;
@@ -67,6 +69,7 @@ BEGIN
 						WHERE patient_id = pid AND voided = 0
 						AND pidt.uuid = "f54ed6b9-f5b9-4fd5-a588-8f7561a78401"
 						LIMIT 1 INTO ecid;
+
             SELECT identifier
 						FROM patient_identifier
 						LEFT JOIN patient_identifier_type pidt
@@ -74,6 +77,12 @@ BEGIN
 						WHERE patient_id = pid AND voided = 0
 						AND pidt.uuid = "0e0c7cc2-3491-4675-b705-746e372ff346"
 						LIMIT 1 INTO old_id;
+
+            SELECT M2BP_PERSONID
+            FROM biopluginserverse.m2bp_person_template
+            WHERE M2BP_REGISTRATIONNO = old_id
+            LIMIT 1 INTO fingerprint_id;
+
 			IF isanteplus_id IS NULL THEN
 				SET isanteplus_id = '';
             END IF;
@@ -89,9 +98,16 @@ BEGIN
 			IF old_id IS NULL THEN
 				SET old_id = '';
             END IF;
+      IF fingerprint_id IS NULL THEN
+				SET fingerprint_id = '';
+            END IF;
 
-			INSERT INTO tmp_pid(patient_id, isanteplus_id, st_code, code_national, ecid, old_id) VALUES(pid, isanteplus_id, st_code, code_national, ecid, old_id);
-
+			INSERT INTO tmp_pid(patient_id, isanteplus_id, st_code, code_national, ecid, old_id, fingerprint_id) VALUES(pid, isanteplus_id, st_code, code_national, ecid, old_id, fingerprint_id);
+            SET fingerprint_id = '';
+            SET old_id = '';
+            SET code_national = '';
+            SET st_code = '';
+            SET isanteplus_id = '';
             SET done = tmpdone;
         END IF;
 	UNTIL done = TRUE END REPEAT;
@@ -103,11 +119,11 @@ DELIMITER ;
 CALL create_pid();
 
 SELECT 'isanteplus_id', 'st_code', 'code_national', 'family_name', 'given_name', 'birthdate',
-				'gender', 'address1', 'city_village', 'state_province', 'postal_code', 'ecid', 'old_id'
+				'gender', 'address1', 'city_village', 'state_province', 'postal_code', 'fingerprint_id', 'old_id', 'ecid'
 UNION ALL
 SELECT pid.isanteplus_id, pid.st_code, pid.code_national, nam.family_name, nam.given_name, coalesce(per.birthdate, ''),
 coalesce(per.gender, 'O'), coalesce(adr.address1, ''), coalesce(adr.city_village, ''), coalesce(adr.state_province, ''),
-coalesce(adr.postal_code, ''), pid.ecid, pid.old_id
+coalesce(adr.postal_code, ''), pid.fingerprint_id, pid.old_id, pid.ecid
 FROM patient pat
 JOIN person per ON pat.patient_id = per.person_id AND per.voided = 0
 JOIN person_name nam ON nam.person_id = per.person_id AND nam.voided = 0

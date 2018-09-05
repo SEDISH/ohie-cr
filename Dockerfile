@@ -58,5 +58,5 @@ WORKDIR /
 COPY /cmd.sh /cmd.sh
 RUN chmod +x /cmd.sh
 
+ENV CATALINA_OPTS="-Xms8096M -Xmx8096M"
 CMD /cmd.sh
-
